@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description"
+    content="Ce site incroyable envoie une notification push avec l'heure de début du live de Sardoche lorsqu'il en définit une sur son addon. Utile quand on est sur smartphone.">
+  <meta name="keywords" content="Sardoche, Twitch, Live">
+  <meta name="author" content="@Jyben_">
+  <title>Sardoche Live Alert</title>
+  <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="images/domo.ico" />
+</head>
+
+<div class="container">
+
+  <body>
+
+    <img onclick="play()" src="https://static-cdn.jtvnw.net/emoticons/v1/302196705/3.0" class="logo">
+    <p>Ce site incroyable envoie une notification push avec l'heure de début du live de Sardoche lorsqu'il en définit
+      une sur
+      son
+      <a href="http://sardoche.tv/addon" target="_blank">addon</a>. Utile quand on est sur smartphone.</p>
+    <p>Il faut accepter les notifications et garder l'onglet ouvert (en fond) pour recevoir la notification, ou
+      checker cette page.</p>
+    <% if (live) { %>
+    <p>Prochain stream à: <%= time %></p>
+    <% } %>
+    <% if (onair) { %>
+    <p>Sardoche est actuellement <a href="https://www.twitch.tv/Sardoche" target="_blank">en live</a>.</p>
+    <% } %>
+
+    <hr>
+
+  </body>
+
+  <footer>
+    Développé par <a href="https://twitter.com/Jyben_" target="_blank">@Jyben_</a>. Sources : <br>
+    <u><a onclick="play()" style="cursor: pointer;">Je suis Japonais. Domo.</a></u>
+    <audio id="audio" src="../assets/sardoche-domo.mp3"></audio>
+  </footer>
+</div>
+
+<script type="application/javascript" src="javascripts/client.js"></script>
+
+</html>

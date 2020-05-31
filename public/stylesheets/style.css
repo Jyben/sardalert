@@ -1,0 +1,28 @@
+@font-face {font-family: "ProximaNovaSoftW03"; src: url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.eot"); src: url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.woff") format("woff"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/251c35fe6eeec7ffa3d335357aabcbd0.svg#ProximaNovaSoftW03-Semibold") format("svg"); }
+
+body {
+    font-family: "ProximaNovaSoftW03";
+    font-size: 35px;
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+
+footer {
+    font-family: "ProximaNovaSoftW03";
+    font-size: 13px;
+}
+
+.container {
+    width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
