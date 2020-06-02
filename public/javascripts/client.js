@@ -1,42 +1,35 @@
-let played = false;
-let notified = false;
+let played = false
 
 if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.getRegistrations().then(
+		function (registrations) {
+			try {
+				for (let registration of registrations) {
+					registration.unregister()
+				}
+			} catch (error) {
+				console.log(error)
+			}
+		}
+	)
+
 	run().catch(error => console.error(error))
 }
 
 async function run() {
 	const registration = await navigator.serviceWorker.
-		register('./sw.js', { scope: '/' })
+		register('sw.js', { scope: './' })
 
 	Notification.requestPermission(function (result) {
 		if (result === 'granted') {
-			navigator.serviceWorker.ready.then(function (registration) {
-				setInterval(async (callback) => {
-					await fetch('/status', {
-						method: 'GET'
-					}).then(function (response) {
-						response.json().then(function (result) {
-							if (result.live) {
-								callback(result.time)
-							}
-							else if (!result.onair) {
-								notified = false;
-							}
-						});
-					})
-				},
-					60000,
-					(time) => {
-						if (notified) return;
+			if (!navigator.serviceWorker) {
+				return console.error("Service Worker not supported")
+			}
 
-						notified = true;
-						registration.showNotification('Sardoche Live Alert', {
-							body: `Début du live de Sardoche prévu à ${time}`,
-							icon: 'https://static-cdn.jtvnw.net/emoticons/v1/300746370/2.0'
-						})
-					})
-			})
+			navigator.serviceWorker.ready
+				.then(registration => registration.sync.register('syncData'))
+				.then(() => console.log("Registered background sync"))
+				.catch(err => console.error("Error registering background sync", err))
 		}
 	})
 }
