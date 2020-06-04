@@ -11,7 +11,7 @@ async function syncData(io) {
 				notified = true
 				io.emit('data', result)
 			}
-			else {
+			else if (!result.live) {
 				notified = false
 			}
 

@@ -1,7 +1,7 @@
 let played = false
 
 const socket = io.connect('https://sardalert.com')
-socket.on('data', (result) => {
+socket.on('data', (resultData) => {
 	if ('serviceWorker' in navigator) {
 		run().catch(error => console.error(error))
 	}
@@ -13,7 +13,7 @@ socket.on('data', (result) => {
 		Notification.requestPermission(function (result) {
 			if (result === 'granted') {
 				registration.showNotification('Sardoche Live Alert', {
-					body: `Début du live de Sardoche prévu à ${result.time}`,
+					body: `Début du live de Sardoche prévu à ${resultData.time}`,
 					icon: 'https://static-cdn.jtvnw.net/emoticons/v1/300746370/2.0'
 				})
 			}
